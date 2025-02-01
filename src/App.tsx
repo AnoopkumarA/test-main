@@ -17,7 +17,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Auth />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/Home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
