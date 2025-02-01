@@ -7,8 +7,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import Home from "./Home";
 
+import { useEffect } from "react";
 
 const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +47,7 @@ const Auth = () => {
           password,
         });
         if (error) throw error;
-        navigate("/Home");
+        navigate("/dashboard");
       }
     } catch (error) {
       setError(error instanceof Error ? error.message : "An error occurred");
