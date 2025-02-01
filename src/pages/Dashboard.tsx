@@ -1,6 +1,16 @@
 import React from 'react';
+import { supabase } from "@/integrations/supabase/client";
 
 const Dashboard = () => {
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Error logging out:", error.message);
+    } else {
+      window.location.href = "/";
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black text-white font-sans">
     {/* Navbar */}
@@ -11,7 +21,12 @@ const Dashboard = () => {
         <a href="#" className="text-purple-300 hover:text-purple-400">New Analysis</a>
         <a href="#" className="text-purple-300 hover:text-purple-400">Past Analysis</a>
       </div>
-      <button className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg">Log Out</button>
+      <button 
+        className="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg" 
+        onClick={handleLogout}
+      >
+        Log Out
+      </button>
     </nav>
 
     {/* Hero Section */}
